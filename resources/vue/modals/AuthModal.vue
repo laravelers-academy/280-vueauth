@@ -96,7 +96,9 @@
                         <div class="uk-text-small uk-text-center">
                             <a href="#" uk-switcher-item="1">Back to login</a>
                         </div>
+                    
                     </form>
+
                 </li>
 
             </ul>
@@ -109,7 +111,7 @@
 <script>
 	
 	export default {
-		
+
 	}
 
 </script>
