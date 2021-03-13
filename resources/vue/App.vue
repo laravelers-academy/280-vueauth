@@ -2,13 +2,15 @@
 	
 	<div id="app_wrapper">
 		
-		<header-component></header-component>
+		<header-component
+			:is-auth="isAuth"></header-component>
 
     	<main-component></main-component>
 
     	<footer-component></footer-component>
 
-		<auth-modal></auth-modal>
+		<auth-modal
+			v-if="!isAuth"></auth-modal>
 
 	</div>
 
@@ -28,7 +30,24 @@
 			MainComponent,
 			FooterComponent,
 			AuthModal,
+		},
+
+		beforeCreate () {
+
+			store.dispatch('setAuthUser');
+
+		},
+
+		computed: {
+
+			isAuth () {
+
+				return (state.authUser) ? true : false;
+
+			}
+
 		}
+
 
 	}
 

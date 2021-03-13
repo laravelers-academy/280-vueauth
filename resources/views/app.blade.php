@@ -9,6 +9,7 @@
 
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.17/dist/css/uikit.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/custom.css') }}">
 
 </head>
 <body>
@@ -20,6 +21,7 @@
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.17/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.17/dist/js/uikit-icons.min.js"></script>
+    <script src="{{ mix('js/custom.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
 
 </body>

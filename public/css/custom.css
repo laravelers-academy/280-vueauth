@@ -1,0 +1,9 @@
+.error-msg {
+	font-weight: 600;
+	color: red;
+}
+
+.uk-form-icon {
+	top: 17px !important;
+	bottom: unset !important;
+}

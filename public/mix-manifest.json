@@ -1,4 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
-    "/js/ResetPassword.js": "/js/ResetPassword.js"
+    "/js/ResetPassword.js": "/js/ResetPassword.js",
+    "/js/custom.js": "/js/custom.js",
+    "/css/custom.css": "/css/custom.css"
 }

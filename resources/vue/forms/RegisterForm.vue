@@ -1,6 +1,6 @@
 <template>
 	
-	<form>
+	<form id="register_form" @submit.prevent="onSubmit">
 
         <h3 class="uk-card-title uk-text-center">Sign up today. It's free!</h3>
 
@@ -10,7 +10,7 @@
             name="name"
             placeholder="Escribe tu nombre"
             icon="user"
-            validators="required lenght"
+            validators="required length"
             min_length="5"
             max_length="100"
             v-model="name"></text-input-component>
@@ -30,7 +30,7 @@
             name="password"
             placeholder="Contraseña"
             icon="lock"
-            validators="required lenght"
+            validators="required length"
             min_length="8"
             v-model="password"></text-input-component>
 
@@ -76,6 +76,12 @@
             ButtonComponent
         },
 
+        emits: {
+            submit: (payload) => {
+                return payload
+            }
+        },
+
         data() {
             return {
                 name: "",
@@ -84,7 +90,62 @@
                 password_confirmation: "",
                 terms: false,
                 disabled: false,
+                registerFormValidator: undefined
             }
+        },
+
+        mounted() {
+
+            this.registerFormValidator = new JSValidator('register_form').init();
+
+        },
+
+        methods: {
+
+            onSubmit () {
+
+                if(this.registerFormValidator.status && this.terms) {
+
+                    // Deshabilitar el botón
+                    this.disabled = true;
+
+                    // Petición por axios
+                    axios.post('/register', {
+                        name: this.name,
+                        email: this.email,
+                        password: this.password,
+                        password_confirmation: this.password_confirmation
+                    }).then( res => {
+
+                        this.$emit('submit', {
+                            message: "Cuenta creada exitosamente",
+                            res: res,
+                        });
+
+                    }).catch( error => {
+
+                        this.disabled = false;
+
+                        UIkit.notification({
+                            message: 'Ha ocurrido un error inesperado',
+                            status: 'danger',
+                        });
+
+                    })
+
+                } else {
+
+                    this.disabled = false;
+
+                    UIkit.notification({
+                        message: 'Error de validación',
+                        status: 'danger',
+                    });
+
+                }
+
+            }
+
         }
 
 	}

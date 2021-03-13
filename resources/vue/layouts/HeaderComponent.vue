@@ -17,7 +17,9 @@
                         
                         <ul class="uk-navbar-nav">
                             
-                            <li class="uk-parent">
+                            <li 
+                                v-if="!isAuth"
+                                class="uk-parent">
                                 <a href="#" uk-toggle="target: #auth_modal">Acceso</a>
                             </li>
 
@@ -38,6 +40,13 @@
 	
 	export default {
 		
+        props: {
+            isAuth: {
+                type: Boolean,
+                required: true
+            }
+        }
+        
 	}
 
 </script>

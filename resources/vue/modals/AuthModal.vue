@@ -17,17 +17,20 @@
                 
                 <!-- Register Form -->
                 <li>
-                    <login-form></login-form>
+                    <login-form
+                        @submit="submitForm"></login-form>
                 </li>
                 
                 <!-- Login Form -->
                 <li>
-                    <register-form></register-form>
+                    <register-form
+                        @submit="submitForm"></register-form>
                 </li>
 
                 <!-- Forgot password -->
                 <li>
-                    <reset-password-form></reset-password-form>
+                    <reset-password-form
+                        @submit="submitForm"></reset-password-form>
                 </li>
 
             </ul>
@@ -50,6 +53,25 @@
             LoginForm,
             RegisterForm,
             ResetPasswordForm
+        },
+
+        methods: {
+
+            submitForm (payload) {
+
+                store.dispatch('setAuthUser');
+
+                UIkit.notification({
+                    message: payload.message,
+                    status: 'success'
+                });
+
+                UIkit.modal('#auth_modal').hide();
+
+                // ...
+
+            }
+
         }
 
 	}
