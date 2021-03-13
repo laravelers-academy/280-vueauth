@@ -2,11 +2,7 @@
 	
 	<main>
     	
-    	<div class="uk-section">
-            
-            <router-view />
-
-        </div>
+        <router-view />
         
     </main>
 

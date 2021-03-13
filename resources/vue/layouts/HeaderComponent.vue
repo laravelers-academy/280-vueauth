@@ -17,10 +17,13 @@
                         
                         <ul class="uk-navbar-nav">
                             
-                            <li 
-                                v-if="!isAuth"
-                                class="uk-parent">
+                            <li v-if="!isAuth">
                                 <a href="#" uk-toggle="target: #auth_modal">Acceso</a>
+                            </li>
+
+                            <li v-if="isAuth">
+                                <logout-component
+                                    text="Salir"></logout-component>
                             </li>
 
                         </ul>
@@ -38,6 +41,8 @@
 
 <script>
 	
+    import LogoutComponent from '../components/LogoutComponent'
+
 	export default {
 		
         props: {
@@ -45,6 +50,10 @@
                 type: Boolean,
                 required: true
             }
+        },
+
+        components: {
+            LogoutComponent
         }
         
 	}
